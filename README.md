@@ -1,5 +1,21 @@
 # PACT: Contract-Aware xApp Authority and Control Value Arbitration in Multi-Tenant Open RAN
 
+**Authors:**
+
+Md. Kamrul Hossain, Walid Aljoby, Ahmed M. Abdelmoniem, Daniel B. da Costa
+
+Md. Kamrul Hossain is with Information and Computer Science Department, King Fahd University of Petroleum and Minerals, Dhahran 31261, Saudi Arabia.
+
+Walid Aljoby is with Information and Computer Science Department, and IRC for Intelligent Secure Systems, King Fahd University of Petroleum and Minerals, Dhahran 31261, Saudi Arabia.
+
+Ahmed M. Abdelmoniem is with School of Electronic Engineering and Computer Science, Queen Mary University of London, UK.
+
+Daniel B. da Costa is with IRC for Communication Systems and Sensing, Department of Electrical Engineering, KFUPM, Saudi Arabia.
+
+Emails: g202215400@kfupm.edu.sa, waleed.gobi@kfupm.edu.sa, ahmed.sayed@qmul.ac.uk, danielbcosta@ieee.org
+
+**This work has been submitted for review in IEEE WCNC.**
+
 This repository contains the code and the evaluation results of **PACT**
 (**P**aired-twin **A**uthority and **C**ontract-aware arbi**T**ration). PACT is a
 two-loop arbiter for the near-real-time RAN Intelligent Controller (near-RT RIC):

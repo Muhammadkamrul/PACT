@@ -1,0 +1,7 @@
+{
+  "intent_miss_pct": 19.047619047619047,
+  "floor_breach_pct": 20.0,
+  "safety_crossing_pct": 3.917821309125657,
+  "intent_inversion_pct": 7.366666666666667,
+  "tenant_inversion_pct": 8.38888888888889
+}

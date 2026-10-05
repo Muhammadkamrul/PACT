@@ -1,0 +1,155 @@
+{
+  "effects": {
+    "full": {
+      "heldout_RMSE": 0.27121168971998705,
+      "zero_RMSE": 0.3298077470302031,
+      "per_intent_RMSE": {
+        "i1": 0.07826922995158296,
+        "i2": 0.10240843667303808,
+        "i3": 0.30855692351189307,
+        "i4": 0.07247711989796633,
+        "i5": 0.040902728828108026,
+        "delay_T1": 0.41000243453730073,
+        "delay_T2": 0.4775369794250874
+      }
+    },
+    "scalar": {
+      "heldout_RMSE": 0.28531540661756405,
+      "zero_RMSE": 0.3298077470302031,
+      "per_intent_RMSE": {
+        "i1": 0.07882947998174283,
+        "i2": 0.16304558532258337,
+        "i3": 0.30284654935815625,
+        "i4": 0.07414466971458271,
+        "i5": 0.179728187716199,
+        "delay_T1": 0.41056478951757686,
+        "delay_T2": 0.48883237066448176
+      }
+    },
+    "no-alpha": {
+      "heldout_RMSE": 0.3074345783801978,
+      "zero_RMSE": 0.3298077470302031,
+      "per_intent_RMSE": {
+        "i1": 0.0821168986236009,
+        "i2": 0.10731985249719284,
+        "i3": 0.33279951177689965,
+        "i4": 0.0755605791695976,
+        "i5": 0.040902728828108026,
+        "delay_T1": 0.4822163496884104,
+        "delay_T2": 0.540999858420779
+      }
+    },
+    "no-beta": {
+      "heldout_RMSE": 0.2936163670898799,
+      "zero_RMSE": 0.3298077470302031,
+      "per_intent_RMSE": {
+        "i1": 0.07951395646564001,
+        "i2": 0.20535391236498748,
+        "i3": 0.3037551770238482,
+        "i4": 0.07469711795438173,
+        "i5": 0.19824357870857523,
+        "delay_T1": 0.41302151957718153,
+        "delay_T2": 0.4972395191781119
+      }
+    },
+    "no-gamma": {
+      "heldout_RMSE": 0.27125513606515966,
+      "zero_RMSE": 0.3298077470302031,
+      "per_intent_RMSE": {
+        "i1": 0.0782810306076731,
+        "i2": 0.10258555778413629,
+        "i3": 0.3082586653319694,
+        "i4": 0.07245227108577669,
+        "i5": 0.040902728828108026,
+        "delay_T1": 0.4100002559402765,
+        "delay_T2": 0.4778679169381473
+      }
+    },
+    "paired_components": {
+      "alpha_RMSE": 0.2656456845701491,
+      "beta_RMSE": 0.025432343815736606,
+      "gamma_RMSE": 0.003123996073366603,
+      "beta_mean_abs_truth": 0.012544084745891674,
+      "gamma_mean_abs_truth": 0.000353205579174713,
+      "heldout_snapshots": 96,
+      "whole_episode_split": true,
+      "paired_twin_requirement": true
+    },
+    "reactive-refit": {
+      "heldout_RMSE": 0.2696098579119416,
+      "matched_reactive_mediator": true
+    }
+  },
+  "MILD": [
+    {
+      "intent": "i1",
+      "safe_samples": 96,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.0,
+      "gate": false
+    },
+    {
+      "intent": "i2",
+      "safe_samples": 94,
+      "future_events": 1,
+      "safe_PR_AUC": 0.125,
+      "base_rate": 0.010638297872340425,
+      "lift": 11.75,
+      "brier": 0.032520804554224014,
+      "gate": false
+    },
+    {
+      "intent": "i3",
+      "safe_samples": 88,
+      "future_events": 50,
+      "safe_PR_AUC": 0.640201966982789,
+      "base_rate": 0.5681818181818182,
+      "lift": 1.1267554618897084,
+      "brier": 0.22934168577194214,
+      "gate": true
+    },
+    {
+      "intent": "i4",
+      "safe_samples": 96,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.0,
+      "gate": false
+    },
+    {
+      "intent": "i5",
+      "safe_samples": 69,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.13822855055332184,
+      "gate": false
+    },
+    {
+      "intent": "delay_T1",
+      "safe_samples": 92,
+      "future_events": 22,
+      "safe_PR_AUC": 0.2705996318043527,
+      "base_rate": 0.2391304347826087,
+      "lift": 1.1315984602727476,
+      "brier": 0.24855612218379974,
+      "gate": true
+    },
+    {
+      "intent": "delay_T2",
+      "safe_samples": 91,
+      "future_events": 14,
+      "safe_PR_AUC": 0.14590126968708803,
+      "base_rate": 0.15384615384615385,
+      "lift": 0.9483582529660721,
+      "brier": 0.35238292813301086,
+      "gate": false
+    }
+  ]
+}

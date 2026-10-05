@@ -1,0 +1,31 @@
+{
+  "method": "W3R",
+  "seed": 5118,
+  "epochs": 300,
+  "WIF": 0.9230496453900712,
+  "contract_weighted_fulfillment": 0.9125059665871122,
+  "tenant_priority_inversion": 0.149,
+  "C3_shortfall": 0.0,
+  "C3_breach_fraction": 0.0,
+  "C1": 0,
+  "C2": 0,
+  "writes_per_epoch": 0.6666666666666666,
+  "applied_per_epoch": 0.6633333333333333,
+  "selection_p95_ms": 3.80714460038689,
+  "tenant_fulfillment": {
+    "T1": 0.8942857142857144,
+    "T2": 0.9586666666666667,
+    "T3": 0.87,
+    "T4": 1.0,
+    "H": 0.9566666666666667
+  },
+  "intent_fulfillment": {
+    "i1": 1.0,
+    "i2": 1.0,
+    "i3": 0.87,
+    "i4": 1.0,
+    "i5": 0.9566666666666667,
+    "delay_T1": 0.7533333333333333,
+    "delay_T2": 0.8966666666666666
+  }
+}

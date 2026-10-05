@@ -1,0 +1,155 @@
+{
+  "effects": {
+    "full": {
+      "heldout_RMSE": 0.3142483987335115,
+      "zero_RMSE": 0.39471152356730704,
+      "per_intent_RMSE": {
+        "i1": 0.07141753220157844,
+        "i2": 0.07989802764479054,
+        "i3": 0.47566692382763254,
+        "i4": 0.05790210876960089,
+        "i5": 0.057039081566217134,
+        "delay_T1": 0.4730104551748671,
+        "delay_T2": 0.47241529385116104
+      }
+    },
+    "scalar": {
+      "heldout_RMSE": 0.3253926850050497,
+      "zero_RMSE": 0.39471152356730704,
+      "per_intent_RMSE": {
+        "i1": 0.07918916325454955,
+        "i2": 0.19576881559761142,
+        "i3": 0.4820737777418512,
+        "i4": 0.05748950604589999,
+        "i5": 0.12395371681650148,
+        "delay_T1": 0.47783173293295633,
+        "delay_T2": 0.466024231176966
+      }
+    },
+    "no-alpha": {
+      "heldout_RMSE": 0.3703247171461025,
+      "zero_RMSE": 0.39471152356730704,
+      "per_intent_RMSE": {
+        "i1": 0.07761404357257927,
+        "i2": 0.09031151628512867,
+        "i3": 0.6467496133111837,
+        "i4": 0.055969928421223475,
+        "i5": 0.057039081566217134,
+        "delay_T1": 0.5329121098242778,
+        "delay_T2": 0.4869663174625705
+      }
+    },
+    "no-beta": {
+      "heldout_RMSE": 0.33571357552718234,
+      "zero_RMSE": 0.39471152356730704,
+      "per_intent_RMSE": {
+        "i1": 0.07972759398184047,
+        "i2": 0.2870814750503932,
+        "i3": 0.48068048437488176,
+        "i4": 0.05730115057731893,
+        "i5": 0.13622597998504304,
+        "delay_T1": 0.480352602717405,
+        "delay_T2": 0.465316752886512
+      }
+    },
+    "no-gamma": {
+      "heldout_RMSE": 0.31426508700519307,
+      "zero_RMSE": 0.39471152356730704,
+      "per_intent_RMSE": {
+        "i1": 0.0715212503867588,
+        "i2": 0.0798526743642709,
+        "i3": 0.475729499141866,
+        "i4": 0.057907943061016806,
+        "i5": 0.057079557644759964,
+        "delay_T1": 0.4731489993145958,
+        "delay_T2": 0.47227760674840985
+      }
+    },
+    "paired_components": {
+      "alpha_RMSE": 0.31295180428973446,
+      "beta_RMSE": 0.02931538618779968,
+      "gamma_RMSE": 0.006330644253669697,
+      "beta_mean_abs_truth": 0.020456462974814092,
+      "gamma_mean_abs_truth": 0.000583874613308506,
+      "heldout_snapshots": 96,
+      "whole_episode_split": true,
+      "paired_twin_requirement": true
+    },
+    "reactive-refit": {
+      "heldout_RMSE": 0.30889217762304755,
+      "matched_reactive_mediator": true
+    }
+  },
+  "MILD": [
+    {
+      "intent": "i1",
+      "safe_samples": 96,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.0,
+      "gate": false
+    },
+    {
+      "intent": "i2",
+      "safe_samples": 95,
+      "future_events": 6,
+      "safe_PR_AUC": 0.08123267041647204,
+      "base_rate": 0.06315789473684211,
+      "lift": 1.2861839482608073,
+      "brier": 0.06788378208875656,
+      "gate": true
+    },
+    {
+      "intent": "i3",
+      "safe_samples": 76,
+      "future_events": 56,
+      "safe_PR_AUC": 0.7881376602379826,
+      "base_rate": 0.7368421052631579,
+      "lift": 1.069615396037262,
+      "brier": 0.22942976653575897,
+      "gate": false
+    },
+    {
+      "intent": "i4",
+      "safe_samples": 96,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.0,
+      "gate": false
+    },
+    {
+      "intent": "i5",
+      "safe_samples": 70,
+      "future_events": 0,
+      "safe_PR_AUC": null,
+      "base_rate": 0.0,
+      "lift": null,
+      "brier": 0.12133894115686417,
+      "gate": false
+    },
+    {
+      "intent": "delay_T1",
+      "safe_samples": 84,
+      "future_events": 37,
+      "safe_PR_AUC": 0.5384697150654598,
+      "base_rate": 0.44047619047619047,
+      "lift": 1.2224717855540168,
+      "brier": 0.2984560430049896,
+      "gate": true
+    },
+    {
+      "intent": "delay_T2",
+      "safe_samples": 91,
+      "future_events": 25,
+      "safe_PR_AUC": 0.2816780866192631,
+      "base_rate": 0.27472527472527475,
+      "lift": 1.0253082352941176,
+      "brier": 0.2273198813199997,
+      "gate": false
+    }
+  ]
+}

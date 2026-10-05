@@ -1,0 +1,31 @@
+{
+  "method": "QACM-style",
+  "seed": 5118,
+  "epochs": 300,
+  "WIF": 0.9386524822695036,
+  "contract_weighted_fulfillment": 0.9354176610978522,
+  "tenant_priority_inversion": 0.102,
+  "C3_shortfall": 0.0,
+  "C3_breach_fraction": 0.0,
+  "C1": 0,
+  "C2": 0,
+  "writes_per_epoch": 4.663333333333333,
+  "applied_per_epoch": 4.653333333333333,
+  "selection_p95_ms": 0.2862190503947204,
+  "tenant_fulfillment": {
+    "T1": 0.9514285714285715,
+    "T2": 0.9720000000000001,
+    "T3": 0.8966666666666666,
+    "T4": 1.0,
+    "H": 0.85
+  },
+  "intent_fulfillment": {
+    "i1": 1.0,
+    "i2": 1.0,
+    "i3": 0.8966666666666666,
+    "i4": 1.0,
+    "i5": 0.85,
+    "delay_T1": 0.8866666666666667,
+    "delay_T2": 0.93
+  }
+}

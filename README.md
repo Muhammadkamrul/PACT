@@ -16,6 +16,8 @@ Emails: g202215400@kfupm.edu.sa, waleed.gobi@kfupm.edu.sa, ahmed.sayed@qmul.ac.u
 
 **This work has been submitted for review in IEEE WCNC.**
 
+#
+
 This repository contains the code and the evaluation results of **PACT**
 (**P**aired-twin **A**uthority and **C**ontract-aware arbi**T**ration). PACT is a
 two-loop arbiter for the near-real-time RAN Intelligent Controller (near-RT RIC):

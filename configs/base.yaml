@@ -1,0 +1,470 @@
+seed: 20260814
+run:
+  n_epochs: 300
+  checkpoint_every: 25
+  log_every: 50
+  train_epochs: 400
+  seeds:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+ran:
+  seed: 7
+  n_prb: 100
+  prb_bandwidth_hz: 180000
+  slot_ms: 125
+  slots_per_epoch: 8
+  noise_dbm: -104
+  intercell_interf_dbm: -95
+  carrier_ghz: 3.5
+  base_delay_ms: 4.0
+  coupling_txpower: 1.0
+  coupling_subband: 1.0
+  coupling_retx: 1.0
+  envelopes:
+    T1:
+      PRB: 30
+    T2:
+      PRB: 25
+    T3:
+      PRB: 20
+    T4:
+      PRB: 10
+  slices:
+    T1:
+      n_ue: 6
+      load_mbps_per_ue: 2.16
+    T2:
+      n_ue: 5
+      load_mbps_per_ue: 2.7
+    T3:
+      n_ue: 7
+      load_mbps_per_ue: 2.52
+    T4:
+      n_ue: 8
+      load_mbps_per_ue: 0.495
+  initial_controls:
+    quota_T1: 20
+    quota_T1b: 6
+    quota_T2: 22
+    quota_T3: 17
+    quota_T4: 9
+    prbcap_T2: 100
+    mcs_T3: 20
+    schedw_T3: 1.0
+    txpower: 45.0
+  max_queue_kb: 6.0
+tenants:
+- tid: T1
+  omega: 1.0
+  rho_min: 0.9
+  envelope:
+    PRB: 30
+  B_n: 40
+  Bbar_n: 400
+- tid: T2
+  omega: 0.8
+  rho_min: 0.85
+  envelope:
+    PRB: 25
+  B_n: 40
+  Bbar_n: 400
+- tid: T3
+  omega: 1.2
+  rho_min: 0.92
+  envelope:
+    PRB: 20
+  B_n: 40
+  Bbar_n: 400
+- tid: T4
+  omega: 0.3
+  rho_min: 0.7
+  envelope:
+    PRB: 10
+  B_n: 40
+  Bbar_n: 400
+- tid: H
+  omega: 0.6
+  rho_min: 0.6
+  envelope:
+    PRB: 0
+  B_n: 40
+  Bbar_n: 400
+  is_host: true
+intents:
+- iid: i1
+  tenant: T1
+  kpi: throughput_mbps
+  target: 1.9
+  direction: higher_better
+  pi_class: 0.8
+  epsilon: 0.02
+- iid: i2
+  tenant: T2
+  kpi: throughput_mbps
+  target: 2.6
+  direction: higher_better
+  pi_class: 0.9
+  epsilon: 0.02
+- iid: i3
+  tenant: T3
+  kpi: delay_ms
+  target: 60.0
+  direction: lower_better
+  pi_class: 1.0
+  epsilon: 0.02
+- iid: i4
+  tenant: T4
+  kpi: throughput_mbps
+  target: 0.46
+  direction: higher_better
+  pi_class: 0.3
+  epsilon: 0.02
+- iid: i5
+  tenant: H
+  kpi: txpower_dbm
+  target: 39.0
+  direction: lower_better
+  pi_class: 0.5
+  epsilon: 0.02
+xapps:
+- name: x_T1_thr
+  tenant: T1
+  kind: throughput
+  param: quota_T1
+  domain:
+  - 10
+  - 30
+  step: 1
+  gain: 12.0
+  target: 2.2
+- name: x_T1_url
+  tenant: T1
+  kind: throughput
+  param: quota_T1b
+  domain:
+  - 0
+  - 15
+  step: 1
+  gain: 8.0
+  target: 2.2
+- name: x_T2_str
+  tenant: T2
+  kind: throughput
+  param: prbcap_T2
+  domain:
+  - 40
+  - 100
+  step: 2
+  gain: 48.0
+  target: 2.85
+- name: x_T3_rob
+  tenant: T3
+  kind: robustness
+  param: mcs_T3
+  domain:
+  - 8
+  - 28
+  step: 1
+  gain: 0.2
+  target: 4.0
+- name: x_T3_lat
+  tenant: T3
+  kind: latency
+  param: schedw_T3
+  domain:
+  - 0.4
+  - 2.5
+  step: 0.1
+  gain: 0.08
+  target: 45.0
+- name: x_H_eng
+  tenant: H
+  kind: energy
+  param: txpower
+  domain:
+  - 30
+  - 46
+  step: 1
+  gain: 3.2
+  target: 39.0
+- name: x_H_cap
+  tenant: H
+  kind: energy
+  param: prbcap_T2
+  domain:
+  - 40
+  - 100
+  step: 2
+  gain: 3.2
+  target: 39.0
+claims:
+- jid: j1
+  xapp: x_T1_thr
+  tenant: T1
+  param: quota_T1
+  scope: slice
+  kind: allocative
+  resource: PRB
+  d_bar: 30
+  domain:
+  - 10
+  - 30
+  step: 1
+  r_j: 0.5
+- jid: j2
+  xapp: x_T1_url
+  tenant: T1
+  param: quota_T1b
+  scope: slice
+  kind: allocative
+  resource: PRB
+  d_bar: 15
+  domain:
+  - 0
+  - 15
+  step: 1
+  r_j: 0.3
+- jid: j3
+  xapp: x_T2_str
+  tenant: T2
+  param: prbcap_T2
+  scope: UE
+  kind: regulative
+  domain:
+  - 40
+  - 100
+  step: 2
+  r_j: 0.5
+- jid: j4
+  xapp: x_T3_rob
+  tenant: T3
+  param: mcs_T3
+  scope: slice
+  kind: regulative
+  domain:
+  - 8
+  - 28
+  step: 1
+  r_j: 0.4
+- jid: j5
+  xapp: x_T3_lat
+  tenant: T3
+  param: schedw_T3
+  scope: slice
+  kind: regulative
+  domain:
+  - 0.4
+  - 2.5
+  step: 0.1
+  r_j: 0.4
+- jid: j6
+  xapp: x_H_eng
+  tenant: H
+  param: txpower
+  scope: CELL
+  kind: regulative
+  domain:
+  - 30
+  - 46
+  step: 1
+  r_j: 0.35
+- jid: j7
+  xapp: x_H_cap
+  tenant: H
+  param: prbcap_T2
+  scope: CELL
+  kind: regulative
+  domain:
+  - 40
+  - 100
+  step: 2
+  r_j: 0.35
+margins:
+  window_slots: 40
+risk:
+  # risk.predictor (set per scenario; used only when mild.enabled=false):
+  #   analytical | forecast_diagnostic | zero | constant
+  #   zero     = no-risk ablation (p_hat = 0 everywhere)
+  #   constant = p_hat = risk.constant_p everywhere (anticipation without
+  #              discrimination); risk.constant_p defaults to 0.5
+  horizon_slots: 16
+  logistic_gain: 2.0
+  trend_weight: 1.0
+estimation:
+  eps_exp: 0.08
+  use_cuped: true
+  ridge: 0.001
+  min_samples: 30
+  forgetting_factor: 1.0
+  refit_every: 5
+  n_context: 2
+  trace_every: 20
+sensitivity:
+  sigma_min: 0.0015
+  max_disagreement: 0.5
+  load_regime_edges:
+  - 70
+  - 88
+  sweep_load_scales:
+  - 0.7
+  - 1.0
+  - 1.4
+  sweep_points: 7
+  replicates: 3
+  settle_slots: 6
+  measure_slots: 10
+  base_seed: 1234
+  local_fit: true
+  local_frac: 0.25
+sweep_domains:
+  quota_T1:
+  - 10
+  - 30
+  quota_T1b:
+  - 0
+  - 15
+  prbcap_T2:
+  - 40
+  - 100
+  mcs_T3:
+  - 8
+  - 28
+  schedw_T3:
+  - 0.4
+  - 2.5
+  txpower:
+  - 34
+  - 46
+outer:
+  theta_D: 2.5
+  theta_Lambda: 0.5
+  lambda_u: 1.0
+  eps0: 0.01
+  exhaustive_limit: 20000
+  coupled_pairs:
+  - - j4
+    - j6
+  - - j5
+    - j7
+  deficit_cap: 500.0
+  lambda_cap: 3.0
+  # v10 registered weight-factor ablations (defaults reproduce the frozen
+  # weights exactly): w_i = pi_i * omega_n * u(p_i) * (1 + theta_Lambda Lambda_n)
+  weight_use_pi: true
+  weight_use_omega: true
+  weight_use_urgency: true
+inner:
+  tau_risk: 0.65
+  delta: 0.02
+  epsilon_default: 0.02
+  assert_no_new_victims: true
+  max_step_frac: 0.25
+  # Paper ablation only: replace minimal attenuation by a binary veto.
+  reject_instead_of_attenuate: false
+v2:
+  n_context: 4
+  regime_util_edges: [70.0, 88.0]
+  regime_load_edges: [0.9, 1.25]
+  min_cell_obs: 30
+  lambda_risk: 0.5
+  risk_epsilon_mode: both
+  deficit_discharge_on: actuation
+  c4_accrual_on: qualified
+  c4_selection_mode: performance_frontier
+  c4_performance_slack: 0.0
+  c4_min_primary_gain: 1.0e-9
+  require_exact_frontier: true
+  proposal_gated_admission: true
+  qualified_gated_admission: false
+  outer_score_dose: projected
+  inner_order: benefit
+  wif_primary_objective: linear
+  wif_linear_use_pi: false
+  wif_temperature: 0.04
+  wif_action_cost: 0.0
+  wif_confidence_z: 0.0
+  wif_performance_slack: 0.0
+  existing_breach_tolerance: 0.02
+  # v10 registered ablation switches.  These defaults reproduce the frozen
+  # INTACTv3 exactly; see BENCHMARK_RUNBOOK.md before changing them.
+  # v10 offered-load forecast source seen by EVERY consumer (xApps, the
+  # sensitivity blend, MILD features, INTACTv3-F).  oracle = the exact
+  # schedule value (previous behaviour); noisy | persistence | holt |
+  # seasonal are the degraded/estimated alternatives.
+  # v10.3: load signal that labels the per-intent PLANNING regime.
+  #   tenant     = that intent's own tenant FORECAST load (default,
+  #                previous behaviour: per-tenant resolution + look-ahead)
+  #   tenant_now = that intent's own tenant MEASURED load (per-tenant
+  #                resolution only -- reads no forecast at all)
+  #   cell       = the cell-wide FORECAST load (look-ahead only)
+  #   cell_now   = the cell-wide MEASURED load (neither; identical to p=0)
+  planning_regime_source: tenant
+  forecast_source: oracle
+  forecast_noise_sd: 0.0
+  forecast_bias: 0.0
+  forecast_holt_alpha: 0.25
+  forecast_holt_beta: 0.10
+  forecast_seasonal_min_cycles: 1.0
+  forecast_seed: 20260912
+  predictive_use_pi: true
+  joint_protection: true
+  threshold_protection_policy: portfolio_authorized
+mild:
+  # MILD is OPT-IN.  Enabling it in the shared base config makes every script
+  # that loads this file -- including the integration ladder and the ensemble
+  # -- depend on a trained model artefact being present and current.  Turn it
+  # on per experiment instead:
+  #     --set mild.enabled=true --set mild.model_dir=models/mild_v18_3_sNNN
+  enabled: false
+  model_dir: models/mild
+  seed: 11
+  train_slots: 40000
+  train_epochs: 40
+  batch_size: 256
+  lr: 0.0015
+  pos_weight: 4.0
+  min_time_weight: 0.3
+  focal_gamma: 2.0
+  neg_margin: 0.15
+  lambda_neg: 1.0
+  gate_supervise_weight: 0.3
+  gate_sparsity_weight: 0.005
+  write_prob: 0.15
+  benign_mimic_rate: 0.004
+  regime_period_slots: 900
+  write_mode: walk          # walk | uniform (uniform = legacy, saturating)
+  walk_frac: 0.12           # random-walk step as a fraction of knob domain
+  label_mode: status_quo_episode
+  teacher_augmented: true
+  teacher_type: ran_nonlinear   # ran_nonlinear | logistic
+  teacher_algorithm: extra_trees # extra_trees | hist_gradient_boosting
+  teacher_temperature: 2.0
+  teacher_c: 1.0
+  teacher_max_iter: 160
+  teacher_learning_rate: 0.05
+  teacher_max_leaf_nodes: 15
+  teacher_min_samples_leaf: 12
+  student_supervised_weight: 0.9
+  teacher_gate_weight: 0.7
+  ewma_spans: [1, 3, 5, 9]
+  failure_persistence_epochs: 3
+  status_quo_episode_epochs: 96
+  status_quo_episode_write_prob: 1.0
+  status_quo_episode_walk_frac: 0.20
+  allow_unusable: false
+  load_scales:              # must include GENUINELY LIGHT regimes, or the
+  - 0.45                    # trace never contains a healthy intent and the
+  - 0.65                    # label collapses to a constant
+  - 0.85
+  - 1.0
+  - 1.25
+  - 1.6
+validation:
+  base_seed: 909
+  settle_epochs: 4
+  measure_epochs: 25
+  n_reps: 3
+  paired_epochs: 10
